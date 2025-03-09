@@ -12,7 +12,6 @@
 
 <div class="mx-2 mb-4 flex rounded-sm border border-neutral-800">
 	<div class="mt-auto mb-1 flex items-center justify-center px-2">
-		<div class="left-0"></div>
 		<Tooltip position="left-0 bottom-full" message="Chat identity">
 			<button
 				class="flex items-center justify-center rounded-sm bg-neutral-800 p-0.5 text-2xl hover:bg-neutral-700"
