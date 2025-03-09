@@ -9,9 +9,9 @@
 </script>
 
 <div class="mx-2 mb-4 flex rounded-sm border border-neutral-800">
-	<div class="mt-auto mb-2 flex items-center justify-center px-2">
+	<div class="mt-auto mb-1 flex items-center justify-center px-2">
 		<button
-			class="flex items-center justify-center rounded-sm bg-neutral-800 p-0.5 text-lg hover:bg-neutral-700"
+			class="flex items-center justify-center rounded-sm bg-neutral-800 p-0.5 text-2xl hover:bg-neutral-700"
 			aria-label="chat-identity"
 			><i class="material-symbols-light--star-outline-rounded"></i>
 		</button>
