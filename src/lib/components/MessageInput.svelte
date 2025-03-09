@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Tooltip from './Tooltip.svelte';
+
 	const autoResize = (event: Event) => {
 		const textarea = event.target as HTMLTextAreaElement;
 		if (textarea) {
@@ -10,11 +12,14 @@
 
 <div class="mx-2 mb-4 flex rounded-sm border border-neutral-800">
 	<div class="mt-auto mb-1 flex items-center justify-center px-2">
-		<button
-			class="flex items-center justify-center rounded-sm bg-neutral-800 p-0.5 text-2xl hover:bg-neutral-700"
-			aria-label="chat-identity"
-			><i class="material-symbols-light--star-outline-rounded"></i>
-		</button>
+		<div class="left-0"></div>
+		<Tooltip position="left-0 bottom-full" message="Chat identity">
+			<button
+				class="flex items-center justify-center rounded-sm bg-neutral-800 p-0.5 text-2xl hover:bg-neutral-700"
+				aria-label="chat-identity"
+				><i class="material-symbols-light--star-outline-rounded"></i>
+			</button>
+		</Tooltip>
 	</div>
 
 	<textarea
@@ -25,11 +30,13 @@
 	></textarea>
 
 	<div class="mt-auto mb-1 flex items-center justify-center px-2">
-		<button
-			class="flex items-center justify-center rounded-sm p-0.5 text-2xl text-neutral-400 hover:bg-neutral-800 hover:text-neutral-300"
-			aria-label="add-reaction"
-			><i class="material-symbols-light--add-reaction"></i>
-		</button>
+		<Tooltip position="right-0 bottom-full" message="Add reaction">
+			<button
+				class="flex items-center justify-center rounded-sm p-0.5 text-2xl text-neutral-400 hover:bg-neutral-800 hover:text-neutral-300"
+				aria-label="add-reaction"
+				><i class="material-symbols-light--add-reaction"></i>
+			</button>
+		</Tooltip>
 	</div>
 </div>
 
