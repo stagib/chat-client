@@ -11,7 +11,7 @@
 			<div class="text-sm font-semibold">LIVE CHAT</div>
 		</div>
 
-		<div class="flex h-full flex-col overflow-y-auto">
+		<div class="flex h-full flex-col-reverse overflow-y-auto">
 			{#each { length: 30 } as _, i}
 				<Message username={'username'} content={'dsLLSDSMLD LKSMDKLMSDKML MASDLKMASDKLM MSAMMDM'} />
 				<Message username={'username'} content={'liftstule'} />
