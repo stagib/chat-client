@@ -1,13 +1,30 @@
+<script lang="ts">
+	const autoResize = (event: Event) => {
+		const textarea = event.target as HTMLTextAreaElement;
+		if (textarea) {
+			textarea.style.height = 'auto';
+			textarea.style.height = textarea.scrollHeight + 'px';
+		}
+	};
+</script>
+
 <div class="mx-2 mb-4 flex rounded-sm border border-neutral-800">
-	<div class="flex items-center justify-center px-2">
+	<div class="mt-auto mb-2 flex items-center justify-center px-2">
 		<button
 			class="flex items-center justify-center rounded-sm bg-neutral-800 p-0.5 text-lg hover:bg-neutral-700"
 			aria-label="chat-identity"
 			><i class="material-symbols-light--star-outline-rounded"></i>
 		</button>
 	</div>
-	<input class="w-full bg-transparent py-2 text-sm outline-none" placeholder="Send a message" />
-	<div class="flex items-center justify-center px-2">
+
+	<textarea
+		class="w-full resize-none bg-transparent py-2 text-sm outline-none"
+		oninput={autoResize}
+		placeholder="Send a message"
+		rows="1"
+	></textarea>
+
+	<div class="mt-auto mb-1 flex items-center justify-center px-2">
 		<button
 			class="flex items-center justify-center rounded-sm p-0.5 text-2xl text-neutral-400 hover:bg-neutral-800 hover:text-neutral-300"
 			aria-label="add-reaction"
