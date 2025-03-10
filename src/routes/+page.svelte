@@ -15,11 +15,16 @@
 		<div class="flex h-full flex-col-reverse overflow-y-auto">
 			<MessageWelcome />
 			{#each { length: 10 } as _, i}
-				<Message username={'username'} content={'dsLLSDSMLD LKSMDKLMSDKML MASDLKMASDKLM MSAMMDM'} />
-				<Message username={'username'} content={'liftstule'} />
-				<Message username={'username'} content={'ta'} />
-				<Message username={'username'} content={'nah'} />
 				<Message
+					reply={false}
+					username={'username'}
+					content={'dsLLSDSMLD LKSMDKLMSDKML MASDLKMASDKLM MSAMMDM'}
+				/>
+				<Message reply={true} username={'username'} content={'liftstule'} />
+				<Message reply={false} username={'username'} content={'ta'} />
+				<Message reply={false} username={'username'} content={'nah'} />
+				<Message
+					reply={true}
 					username={'username'}
 					content={'raedy lkie sme itne msire windos smk mmm kkk123'}
 				/>
