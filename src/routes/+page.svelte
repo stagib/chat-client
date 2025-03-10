@@ -5,9 +5,9 @@
 
 <div class="flex h-screen max-h-screen justify-center py-8">
 	<div
-		class="flex h-full max-h-screen w-full max-w-sm flex-col rounded-sm border border-neutral-800 bg-neutral-950"
+		class="flex h-full max-h-screen w-full max-w-sm flex-col rounded-sm border border-neutral-900 bg-neutral-950"
 	>
-		<div class="flex items-center justify-center border-b border-neutral-800 py-2">
+		<div class="flex items-center justify-center bg-neutral-900 py-2">
 			<div class="text-sm font-semibold">LIVE CHAT</div>
 		</div>
 
@@ -23,7 +23,8 @@
 				/>
 			{/each}
 		</div>
-
-		<MessageInput />
+		<div class="bg-neutral-900">
+			<MessageInput />
+		</div>
 	</div>
 </div>
