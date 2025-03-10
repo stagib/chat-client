@@ -1,5 +1,8 @@
 <script lang="ts">
+	import ChatIdentity from './ChatIdentity.svelte';
 	import Tooltip from './Tooltip.svelte';
+
+	let showChatIdentity = $state(false);
 
 	const autoResize = (event: Event) => {
 		const textarea = event.target as HTMLTextAreaElement;
@@ -10,12 +13,17 @@
 	};
 </script>
 
-<div class="mx-2 mb-4 flex rounded-sm border border-neutral-800">
+<ChatIdentity bind:showMenu={showChatIdentity} />
+
+<div class="mx-2 mb-4 flex rounded-sm border border-neutral-800 bg-neutral-900">
 	<div class="mt-auto mb-1 flex items-center justify-center px-2">
 		<Tooltip position="left-0 bottom-full" message="Chat identity">
 			<button
-				class="flex items-center justify-center rounded-sm bg-neutral-800 p-0.5 text-2xl hover:bg-neutral-700"
+				class="flex cursor-pointer items-center justify-center rounded-sm bg-neutral-800 p-0.5 text-2xl hover:bg-neutral-700"
 				aria-label="chat-identity"
+				onclick={() => {
+					showChatIdentity = !showChatIdentity;
+				}}
 				><i class="material-symbols-light--star-outline-rounded"></i>
 			</button>
 		</Tooltip>
