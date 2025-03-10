@@ -15,7 +15,7 @@
 
 <ChatIdentity bind:showMenu={showChatIdentity} />
 
-<div class="mx-2 my-4 flex rounded-sm bg-neutral-800">
+<div class="mx-2 my-4 flex rounded-sm border border-neutral-700">
 	<div class="mt-auto mb-1 flex items-center justify-center px-2">
 		<Tooltip position="left-0 bottom-full" message="Chat identity">
 			<button
