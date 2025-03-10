@@ -2,6 +2,11 @@
 	import ColorButtonSection from './ColorButtonSection.svelte';
 
 	let { showMenu = $bindable(false) } = $props();
+	let currentColor = $state('text-yellow-400');
+
+	const handleColorChange = (color: string) => {
+		currentColor = `text-${color}`;
+	};
 </script>
 
 {#if showMenu}
@@ -9,10 +14,10 @@
 		<div class="flex w-full flex-col overflow-hidden rounded-t-sm bg-neutral-900">
 			<div class="grid grid-cols-3 bg-neutral-800 px-4 py-2">
 				<div></div>
-				<div class="flex items-center justify-center text-sm">Chat Identity</div>
+				<div class="flex items-center justify-center text-sm font-semibold">Chat Identity</div>
 				<div class="flex items-center justify-end">
 					<button
-						class="flex cursor-pointer items-center justify-center rounded-sm text-xl hover:bg-neutral-800"
+						class="flex cursor-pointer items-center justify-center rounded-sm text-2xl hover:bg-neutral-700"
 						aria-label="close"
 						onclick={() => {
 							showMenu = false;
@@ -28,7 +33,7 @@
 				<div class="mb-1 text-sm text-neutral-400">
 					Preview how your name will appear in the chat.
 				</div>
-				<div class="text-sm text-amber-300">username</div>
+				<div class={`text-sm ${currentColor}`}>username</div>
 			</div>
 
 			<div class="px-4 py-4">
@@ -45,7 +50,7 @@
 
 			<div class="px-4 py-4">
 				<div class="mb-1 text-sm font-semibold text-neutral-400">NAME COLOR</div>
-				<ColorButtonSection />
+				<ColorButtonSection onColorChange={handleColorChange} />
 			</div>
 		</div>
 	</div>
