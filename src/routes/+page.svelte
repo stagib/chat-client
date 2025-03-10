@@ -1,6 +1,7 @@
 <script>
 	import Message from '$lib/components/Message.svelte';
 	import MessageInput from '$lib/components/MessageInput.svelte';
+	import MessageWelcome from '$lib/components/MessageWelcome.svelte';
 </script>
 
 <div class="flex h-screen max-h-screen justify-center py-8">
@@ -12,7 +13,8 @@
 		</div>
 
 		<div class="flex h-full flex-col-reverse overflow-y-auto">
-			{#each { length: 30 } as _, i}
+			<MessageWelcome />
+			{#each { length: 10 } as _, i}
 				<Message username={'username'} content={'dsLLSDSMLD LKSMDKLMSDKML MASDLKMASDKLM MSAMMDM'} />
 				<Message username={'username'} content={'liftstule'} />
 				<Message username={'username'} content={'ta'} />
