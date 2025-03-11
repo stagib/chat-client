@@ -1,11 +1,11 @@
 <script>
 	import Tooltip from './Tooltip.svelte';
 
-	let { username, content, reply } = $props();
+	let { message } = $props();
 </script>
 
 <div class="group/content relative max-w-full px-4 py-1 hover:bg-neutral-800">
-	{#if reply}
+	{#if message.reply}
 		<div class="group/reply relative">
 			<div class="truncate text-xs break-all text-neutral-400">
 				<span
@@ -29,9 +29,12 @@
 		</div>
 	{/if}
 
-	<span class="text-sm text-neutral-400">00:00 PM</span>
-	<span class="text-sm text-amber-300">{username}</span><span>:</span>
-	<span class="text-sm">{content}</span>
+	{#if message.time}
+		<span class="text-sm text-neutral-400">00:00 PM</span>
+	{/if}
+
+	<span class={`text-sm ${message.color}`}>{message.username}</span><span>:</span>
+	<span class="text-sm">{message.content}</span>
 
 	<!-- hover icons -->
 	<div

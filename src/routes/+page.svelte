@@ -1,7 +1,20 @@
-<script>
+<script lang="ts">
 	import Message from '$lib/components/Message.svelte';
 	import MessageInput from '$lib/components/MessageInput.svelte';
 	import MessageWelcome from '$lib/components/MessageWelcome.svelte';
+	import { socket } from '$lib/socket';
+	import type { MessageType } from '$lib/types';
+
+	let messages: MessageType[] = $state([]);
+	socket.on('receive_message', (data) => {
+		messages = [...[data], ...messages];
+	});
+
+	const handleMessageInput = (message) => {
+		if (message) {
+			messages = [...[message], ...messages];
+		}
+	};
 </script>
 
 <div class="flex h-screen max-h-screen justify-center py-8">
@@ -13,25 +26,15 @@
 		</div>
 
 		<div class="flex h-full flex-col-reverse overflow-y-auto">
-			<MessageWelcome />
-			{#each { length: 10 } as _, i}
-				<Message
-					reply={false}
-					username={'username'}
-					content={'dsLLSDSMLD LKSMDKLMSDKML MASDLKMASDKLM MSAMMDM'}
-				/>
-				<Message reply={true} username={'username'} content={'liftstule'} />
-				<Message reply={false} username={'username'} content={'ta'} />
-				<Message reply={false} username={'username'} content={'nah'} />
-				<Message
-					reply={true}
-					username={'username'}
-					content={'raedy lkie sme itne msire windos smk mmm kkk123'}
-				/>
+			{#each messages as message}
+				{#if message}
+					<Message {message} />
+				{/if}
 			{/each}
+			<MessageWelcome />
 		</div>
 		<div class="bg-neutral-800">
-			<MessageInput />
+			<MessageInput onMessage={handleMessageInput} />
 		</div>
 	</div>
 </div>

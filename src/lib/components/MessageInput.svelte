@@ -1,8 +1,12 @@
 <script lang="ts">
+	import { socket } from '$lib/socket';
 	import ChatIdentity from './ChatIdentity.svelte';
 	import Tooltip from './Tooltip.svelte';
 
+	let { onMessage } = $props();
 	let showChatIdentity = $state(false);
+	let color = $state('text-yellow-400');
+	let input = $state('');
 
 	const autoResize = (event: Event) => {
 		const textarea = event.target as HTMLTextAreaElement;
@@ -11,9 +15,19 @@
 			textarea.style.height = textarea.scrollHeight + 'px';
 		}
 	};
+
+	const handleInput = (event: KeyboardEvent) => {
+		if (event.key === 'Enter') {
+			event.preventDefault();
+			let message = { content: input, username: 'user123', color: color };
+			socket.emit('send_message', message);
+			onMessage?.(message);
+			input = '';
+		}
+	};
 </script>
 
-<ChatIdentity bind:showMenu={showChatIdentity} />
+<ChatIdentity bind:color bind:showMenu={showChatIdentity} />
 
 <div class="mx-2 my-4 flex rounded-sm border border-neutral-700">
 	<div class="mt-auto mb-1 flex items-center justify-center px-2">
@@ -32,8 +46,10 @@
 	<textarea
 		class="w-full resize-none bg-transparent py-2 text-sm outline-none"
 		oninput={autoResize}
+		onkeypress={handleInput}
 		placeholder="Send a message"
 		rows="1"
+		bind:value={input}
 	></textarea>
 
 	<div class="mt-auto mb-1 flex items-center justify-center px-2">
