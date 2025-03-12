@@ -30,7 +30,7 @@
 	{/if}
 
 	{#if message.time}
-		<span class="text-sm text-neutral-400">00:00 PM</span>
+		<span class="text-sm text-neutral-400">{message.time}</span>
 	{/if}
 
 	<span class={`text-sm ${message.color}`}>{message.username}</span><span>:</span>

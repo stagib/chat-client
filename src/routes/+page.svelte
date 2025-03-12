@@ -5,12 +5,18 @@
 	import { socket } from '$lib/socket';
 	import type { MessageType } from '$lib/types';
 
+	let oldMessages: MessageType[] = $state([]);
 	let messages: MessageType[] = $state([]);
+
+	socket.on('old_messages', (data) => {
+		oldMessages = [...oldMessages, ...data];
+	});
+
 	socket.on('receive_message', (data) => {
 		messages = [...[data], ...messages];
 	});
 
-	const handleMessageInput = (message) => {
+	const handleMessageInput = (message: MessageType) => {
 		if (message) {
 			messages = [...[message], ...messages];
 		}
@@ -31,9 +37,16 @@
 					<Message {message} />
 				{/if}
 			{/each}
+
 			<MessageWelcome />
+
+			{#each oldMessages.slice().reverse() as message}
+				{#if message}
+					<Message {message} />
+				{/if}
+			{/each}
 		</div>
-		<div class="bg-neutral-800">
+		<div class="mt-1 bg-neutral-800">
 			<MessageInput onMessage={handleMessageInput} />
 		</div>
 	</div>
