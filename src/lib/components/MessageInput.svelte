@@ -10,10 +10,13 @@
 	let color = $state('text-yellow-400');
 	let input = $state('');
 
-	const autoResize = (event: Event) => {
+	const autoResize = (event: Event, reset = false) => {
 		const textarea = event.target as HTMLTextAreaElement;
 		if (textarea) {
-			textarea.style.height = 'auto';
+			if (reset) {
+				textarea.style.height = 'auto';
+				return;
+			}
 			textarea.style.height = textarea.scrollHeight + 'px';
 		}
 	};
@@ -31,8 +34,9 @@
 			}
 			let message = { content: input, username: 'user123', color: color, reply: reply };
 			socket.emit('send_message', message);
-			onMessage?.(message);
 			input = '';
+			onMessage?.(message);
+			autoResize(event, true);
 		}
 	};
 </script>
