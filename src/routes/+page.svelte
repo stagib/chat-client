@@ -23,12 +23,12 @@
 	};
 </script>
 
-<div class="flex h-screen max-h-screen justify-center py-8">
+<div class="flex h-screen max-h-screen justify-center py-20">
 	<div
-		class="flex h-full max-h-screen w-full max-w-sm flex-col rounded-sm border border-neutral-800 bg-neutral-900 shadow-2xl"
+		class="flex h-full max-h-screen w-full max-w-sm flex-col overflow-hidden rounded-lg border border-neutral-700 bg-neutral-900 shadow-xl shadow-neutral-950"
 	>
-		<div class="flex items-center justify-center bg-neutral-800 py-2">
-			<div class="text-sm font-semibold">LIVE CHAT</div>
+		<div class="flex items-center justify-center border-b border-neutral-700 bg-neutral-800 py-2">
+			<div class="text-sm font-semibold text-neutral-300">LIVE CHAT</div>
 		</div>
 
 		<div class="flex h-full flex-col-reverse overflow-y-auto">
@@ -46,7 +46,7 @@
 				{/if}
 			{/each}
 		</div>
-		<div class="mt-1 bg-neutral-800">
+		<div class="mt-1 border-t border-neutral-700 bg-neutral-800">
 			<MessageInput onMessage={handleMessageInput} />
 		</div>
 	</div>

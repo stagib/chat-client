@@ -34,7 +34,7 @@
 	{/if}
 
 	<span class={`text-sm ${message.color}`}>{message.username}</span><span>:</span>
-	<span class="text-sm">{message.content}</span>
+	<span class="text-sm break-all">{message.content}</span>
 
 	<!-- hover icons -->
 	<div
