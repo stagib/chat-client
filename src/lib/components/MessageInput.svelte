@@ -24,6 +24,8 @@
 	const handleInput = (event: KeyboardEvent) => {
 		if (event.key === 'Enter') {
 			event.preventDefault();
+			if (input.length <= 0) return;
+
 			let reply = null;
 			if (replyMessage) {
 				reply = {
