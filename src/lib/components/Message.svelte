@@ -28,7 +28,7 @@
 				>
 			</div>
 			<div
-				class="pointer-events-none absolute bottom-full left-0 z-10 hidden group-hover/reply:block"
+				class="pointer-events-none absolute bottom-full left-0 z-20 hidden group-hover/reply:block"
 			>
 				<div class="rounded-sm bg-neutral-950 p-2 text-xs">
 					{message.reply.content}
@@ -46,7 +46,7 @@
 
 	<!-- hover icons -->
 	<div
-		class="absolute right-4 bottom-full z-20 hidden translate-y-1/2 gap-1 group-hover/content:block"
+		class="absolute right-4 bottom-full z-10 hidden translate-y-1/2 gap-1 group-hover/content:block"
 	>
 		<div class="flex gap-1">
 			<Tooltip position="bottom-full right-0" message={copyToolTip}>

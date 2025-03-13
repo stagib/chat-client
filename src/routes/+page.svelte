@@ -32,7 +32,7 @@
 	<div
 		class="flex h-full max-h-screen w-full max-w-sm flex-col overflow-hidden rounded-lg border border-neutral-700 bg-neutral-900 shadow-xl shadow-neutral-950"
 	>
-		<div class="flex items-center justify-center border-b border-neutral-700 bg-neutral-800 py-2">
+		<div class="flex items-center justify-center border-b border-neutral-700 py-2">
 			<div class="text-sm font-semibold text-neutral-300">LIVE CHAT</div>
 		</div>
 
@@ -52,8 +52,6 @@
 			{/each}
 		</div>
 
-		<div class="mt-1 border-t border-neutral-700 bg-neutral-800">
-			<MessageInput onMessage={handleMessageInput} bind:replyMessage />
-		</div>
+		<MessageInput onMessage={handleMessageInput} bind:replyMessage />
 	</div>
 </div>

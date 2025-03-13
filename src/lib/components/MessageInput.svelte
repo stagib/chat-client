@@ -17,6 +17,7 @@
 				textarea.style.height = 'auto';
 				return;
 			}
+			textarea.style.height = 'auto';
 			textarea.style.height = textarea.scrollHeight + 'px';
 		}
 	};
@@ -44,41 +45,47 @@
 	};
 </script>
 
-<ChatIdentity bind:color bind:showMenu={showChatIdentity} />
 <ReplyMenu bind:replyMessage />
 
-<div class="mx-2 my-4 flex rounded-md border border-neutral-700">
-	<div class="mt-auto mb-1 flex items-center justify-center px-2">
-		<Tooltip position="left-0 bottom-full" message="Chat identity">
-			<button
-				class="flex cursor-pointer items-center justify-center rounded-sm bg-transparent p-0.5 text-2xl hover:bg-neutral-700"
-				aria-label="chat-identity"
-				onclick={() => {
-					showChatIdentity = !showChatIdentity;
-				}}
-				><i class="material-symbols-light--star-outline-rounded"></i>
-			</button>
-		</Tooltip>
-	</div>
+<div class="relative mt-4">
+	<div
+		class="mx-2 mb-4 flex border border-neutral-700 {showChatIdentity
+			? 'rounded-b-md'
+			: 'rounded-md'}"
+	>
+		<div class="mt-auto mb-1 flex items-center justify-center px-2">
+			<Tooltip position="left-0 bottom-full" message="Chat identity" disabled={showChatIdentity}>
+				<button
+					class="flex cursor-pointer items-center justify-center rounded-sm bg-transparent p-0.5 text-2xl hover:bg-neutral-700"
+					aria-label="chat-identity"
+					onclick={() => {
+						showChatIdentity = !showChatIdentity;
+					}}
+					><i class="material-symbols-light--star-outline-rounded"></i>
+				</button>
+			</Tooltip>
+		</div>
 
-	<textarea
-		class="w-full resize-none bg-transparent py-2 text-sm outline-none"
-		oninput={autoResize}
-		onkeypress={handleInput}
-		placeholder="Send a message"
-		rows="1"
-		bind:value={input}
-	></textarea>
+		<textarea
+			class="w-full resize-none bg-transparent py-2 text-sm outline-none"
+			oninput={autoResize}
+			onkeypress={handleInput}
+			placeholder="Send a message"
+			rows="1"
+			bind:value={input}
+		></textarea>
 
-	<div class="mt-auto mb-1 flex items-center justify-center px-2">
-		<Tooltip position="right-0 bottom-full" message="Add reaction">
-			<button
-				class="flex cursor-pointer items-center justify-center rounded-sm p-0.5 text-2xl text-neutral-400 hover:bg-neutral-700 hover:text-neutral-300"
-				aria-label="add-reaction"
-				><i class="material-symbols-light--add-reaction"></i>
-			</button>
-		</Tooltip>
+		<div class="mt-auto mb-1 flex items-center justify-center px-2">
+			<Tooltip position="right-0 bottom-full" message="Add reaction">
+				<button
+					class="flex cursor-pointer items-center justify-center rounded-sm p-0.5 text-2xl text-neutral-400 hover:bg-neutral-700 hover:text-neutral-300"
+					aria-label="add-reaction"
+					><i class="material-symbols-light--add-reaction"></i>
+				</button>
+			</Tooltip>
+		</div>
 	</div>
+	<ChatIdentity bind:color bind:showMenu={showChatIdentity} />
 </div>
 
 <style>

@@ -9,8 +9,10 @@
 </script>
 
 {#if showMenu}
-	<div class="flex items-end bg-neutral-950 px-2">
-		<div class="flex w-full flex-col overflow-hidden rounded-t-sm bg-neutral-900">
+	<div class="absolute bottom-full w-full px-2">
+		<div
+			class="flex flex-col overflow-hidden rounded-t-md border border-b-0 border-neutral-700 bg-neutral-900"
+		>
 			<div class="grid grid-cols-3 bg-neutral-800 px-4 py-2">
 				<div></div>
 				<div class="flex items-center justify-center text-sm font-semibold">Chat Identity</div>
