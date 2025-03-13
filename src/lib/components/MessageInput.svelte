@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { socket } from '$lib/socket';
 	import ChatIdentity from './ChatIdentity.svelte';
+	import ReplyMenu from './ReplyMenu.svelte';
 	import Tooltip from './Tooltip.svelte';
 
-	let { onMessage } = $props();
+	let { onMessage, replyMessage = $bindable(null) } = $props();
+
 	let showChatIdentity = $state(false);
 	let color = $state('text-yellow-400');
 	let input = $state('');
@@ -28,6 +30,7 @@
 </script>
 
 <ChatIdentity bind:color bind:showMenu={showChatIdentity} />
+<ReplyMenu bind:replyMessage />
 
 <div class="mx-2 my-4 flex rounded-md border border-neutral-700">
 	<div class="mt-auto mb-1 flex items-center justify-center px-2">

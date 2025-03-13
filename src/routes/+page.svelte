@@ -7,6 +7,7 @@
 
 	let oldMessages: MessageType[] = $state([]);
 	let messages: MessageType[] = $state([]);
+	let replyMessage: MessageType | null = $state(null);
 
 	socket.on('old_messages', (data) => {
 		oldMessages = [...oldMessages, ...data];
@@ -21,6 +22,10 @@
 			messages = [...[message], ...messages];
 		}
 	};
+
+	const handleReply = (message: MessageType) => {
+		replyMessage = message;
+	};
 </script>
 
 <div class="flex h-screen max-h-screen justify-center py-20">
@@ -34,7 +39,7 @@
 		<div class="flex h-full flex-col-reverse overflow-y-auto">
 			{#each messages as message}
 				{#if message}
-					<Message {message} />
+					<Message {message} onReply={handleReply} />
 				{/if}
 			{/each}
 
@@ -42,13 +47,13 @@
 
 			{#each oldMessages.slice().reverse() as message}
 				{#if message}
-					<Message {message} />
+					<Message {message} onReply={handleReply} />
 				{/if}
 			{/each}
 		</div>
 
 		<div class="mt-1 border-t border-neutral-700 bg-neutral-800">
-			<MessageInput onMessage={handleMessageInput} />
+			<MessageInput onMessage={handleMessageInput} bind:replyMessage />
 		</div>
 	</div>
 </div>

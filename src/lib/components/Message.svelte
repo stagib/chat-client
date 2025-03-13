@@ -1,7 +1,8 @@
 <script lang="ts">
+	import type { MessageType } from '$lib/types';
 	import Tooltip from './Tooltip.svelte';
 
-	let { message } = $props();
+	let { message, onReply } = $props();
 	let copyToolTip = $state('Copy');
 
 	const copyContents = (content: string) => {
@@ -10,6 +11,10 @@
 		setTimeout(() => {
 			copyToolTip = 'Copy';
 		}, 1000);
+	};
+
+	const reply = (message: MessageType) => {
+		onReply?.(message);
 	};
 </script>
 
@@ -63,6 +68,7 @@
 				<button
 					class="flex cursor-pointer items-center justify-center rounded-sm bg-neutral-950 p-1 hover:bg-neutral-900"
 					aria-label="reply"
+					onclick={() => reply(message)}
 				>
 					<i class="material-symbols-light--reply"></i>
 				</button>
