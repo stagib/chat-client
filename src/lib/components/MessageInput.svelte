@@ -21,7 +21,15 @@
 	const handleInput = (event: KeyboardEvent) => {
 		if (event.key === 'Enter') {
 			event.preventDefault();
-			let message = { content: input, username: 'user123', color: color };
+			let reply = null;
+			if (replyMessage) {
+				reply = {
+					content: replyMessage.content,
+					username: replyMessage.username,
+					color: replyMessage.color
+				};
+			}
+			let message = { content: input, username: 'user123', color: color, reply: reply };
 			socket.emit('send_message', message);
 			onMessage?.(message);
 			input = '';
