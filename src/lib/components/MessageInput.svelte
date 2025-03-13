@@ -34,9 +34,10 @@
 			}
 			let message = { content: input, username: 'user123', color: color, reply: reply };
 			socket.emit('send_message', message);
-			input = '';
 			onMessage?.(message);
 			autoResize(event, true);
+			input = '';
+			replyMessage = null;
 		}
 	};
 </script>
