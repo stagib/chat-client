@@ -1,7 +1,16 @@
-<script>
+<script lang="ts">
 	import Tooltip from './Tooltip.svelte';
 
 	let { message } = $props();
+	let copyToolTip = $state('Copy');
+
+	const copyContents = (content: string) => {
+		navigator.clipboard.writeText(content);
+		copyToolTip = 'Copied to clipboard';
+		setTimeout(() => {
+			copyToolTip = 'Copy';
+		}, 1000);
+	};
 </script>
 
 <div class="group/content relative max-w-full px-4 py-1 hover:bg-neutral-800">
@@ -41,10 +50,11 @@
 		class="absolute right-4 bottom-full z-20 hidden translate-y-1/2 gap-1 group-hover/content:block"
 	>
 		<div class="flex gap-1">
-			<Tooltip position="bottom-full right-0" message="Copy">
+			<Tooltip position="bottom-full right-0" message={copyToolTip}>
 				<button
 					class="flex cursor-pointer items-center justify-center rounded-sm bg-neutral-950 p-1 hover:bg-neutral-900"
 					aria-label="copy"
+					onclick={() => copyContents(message.content)}
 				>
 					<i class="material-symbols-light--content-copy"></i>
 				</button>
