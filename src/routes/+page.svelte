@@ -46,6 +46,7 @@
 				{/if}
 			{/each}
 		</div>
+
 		<div class="mt-1 border-t border-neutral-700 bg-neutral-800">
 			<MessageInput onMessage={handleMessageInput} />
 		</div>

@@ -33,7 +33,7 @@
 	<div class="mt-auto mb-1 flex items-center justify-center px-2">
 		<Tooltip position="left-0 bottom-full" message="Chat identity">
 			<button
-				class="flex cursor-pointer items-center justify-center rounded-sm bg-neutral-800 p-0.5 text-2xl hover:bg-neutral-700"
+				class="flex cursor-pointer items-center justify-center rounded-sm bg-transparent p-0.5 text-2xl hover:bg-neutral-700"
 				aria-label="chat-identity"
 				onclick={() => {
 					showChatIdentity = !showChatIdentity;
@@ -55,7 +55,7 @@
 	<div class="mt-auto mb-1 flex items-center justify-center px-2">
 		<Tooltip position="right-0 bottom-full" message="Add reaction">
 			<button
-				class="flex items-center justify-center rounded-sm p-0.5 text-2xl text-neutral-400 hover:bg-neutral-800 hover:text-neutral-300"
+				class="flex cursor-pointer items-center justify-center rounded-sm p-0.5 text-2xl text-neutral-400 hover:bg-neutral-700 hover:text-neutral-300"
 				aria-label="add-reaction"
 				><i class="material-symbols-light--add-reaction"></i>
 			</button>
