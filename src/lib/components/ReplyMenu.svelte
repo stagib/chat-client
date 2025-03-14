@@ -3,9 +3,11 @@
 </script>
 
 {#if replyMessage}
-	<div class="flex items-end bg-neutral-950 px-2">
-		<div class="flex w-full flex-col overflow-hidden rounded-t-sm bg-neutral-900">
-			<div class="flex items-center justify-between">
+	<div class="absolute bottom-full z-20 w-full px-2">
+		<div
+			class="flex w-full flex-col overflow-hidden rounded-t-md border border-b-0 border-neutral-700 bg-neutral-900"
+		>
+			<div class="flex items-center justify-between bg-neutral-800">
 				<div class="px-4 text-sm text-neutral-300">
 					<span>Reply to</span>
 					<span>@{replyMessage.username}</span>
@@ -24,7 +26,7 @@
 				</div>
 			</div>
 
-			<div class="group/content relative mb-2 max-w-full px-4 py-1 hover:bg-neutral-800">
+			<div class="group/content relative mb-2 max-w-full px-4 py-1">
 				{#if replyMessage.time}
 					<span class="text-sm text-neutral-400">{replyMessage.time}</span>
 				{/if}

@@ -9,7 +9,7 @@
 </script>
 
 {#if showMenu}
-	<div class="absolute bottom-full w-full px-2">
+	<div class="absolute bottom-full z-40 w-full px-2">
 		<div
 			class="flex flex-col overflow-hidden rounded-t-md border border-b-0 border-neutral-700 bg-neutral-900"
 		>

@@ -45,11 +45,9 @@
 	};
 </script>
 
-<ReplyMenu bind:replyMessage />
-
 <div class="relative mt-4">
 	<div
-		class="mx-2 mb-4 flex border border-neutral-700 {showChatIdentity
+		class="mx-2 mb-4 flex border border-neutral-700 {showChatIdentity || replyMessage
 			? 'rounded-b-md'
 			: 'rounded-md'}"
 	>
@@ -86,6 +84,7 @@
 		</div>
 	</div>
 	<ChatIdentity bind:color bind:showMenu={showChatIdentity} />
+	<ReplyMenu bind:replyMessage />
 </div>
 
 <style>
