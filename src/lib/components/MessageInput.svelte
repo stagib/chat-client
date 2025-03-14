@@ -5,9 +5,11 @@
 	import Tooltip from './Tooltip.svelte';
 
 	let { onMessage, replyMessage = $bindable(null) } = $props();
-
 	let showChatIdentity = $state(false);
+
+	// default values for message
 	let color = $state('text-yellow-400');
+	let username = $state('anonymous');
 	let input = $state('');
 
 	const autoResize = (event: Event, reset = false) => {
@@ -35,7 +37,7 @@
 					color: replyMessage.color
 				};
 			}
-			let message = { content: input, username: 'user123', color: color, reply: reply };
+			let message = { content: input, username: username, color: color, reply: reply };
 			socket.emit('send_message', message);
 			onMessage?.(message);
 			autoResize(event, true);
@@ -83,7 +85,7 @@
 			</Tooltip>
 		</div>
 	</div>
-	<ChatIdentity bind:color bind:showMenu={showChatIdentity} />
+	<ChatIdentity bind:color bind:username bind:showMenu={showChatIdentity} />
 	<ReplyMenu bind:replyMessage />
 </div>
 

@@ -1,7 +1,11 @@
 <script lang="ts">
 	import ColorButtonSection from './ColorButtonSection.svelte';
 
-	let { showMenu = $bindable(false), color = $bindable('text-yellow-400') } = $props();
+	let {
+		showMenu = $bindable(false),
+		color = $bindable('text-yellow-400'),
+		username = $bindable('anonymous')
+	} = $props();
 
 	const handleColorChange = (c: string) => {
 		color = `text-${c}`;
@@ -34,7 +38,7 @@
 				<div class="mb-1 text-sm text-neutral-400">
 					Preview how your name will appear in the chat.
 				</div>
-				<div class={`text-sm ${color}`}>username</div>
+				<div class={`text-sm ${color}`}>{username}</div>
 			</div>
 
 			<div class="px-4 py-4">
@@ -43,9 +47,8 @@
 					<input
 						class="w-full bg-neutral-800 px-2 py-1 outline-none"
 						placeholder="username"
-						value="username"
+						bind:value={username}
 					/>
-					<button class="cursor-pointer bg-neutral-700 px-2 py-1 hover:bg-neutral-600">Save</button>
 				</div>
 			</div>
 
