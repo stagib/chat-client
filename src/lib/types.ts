@@ -3,4 +3,5 @@ export type MessageType = {
 	content: string;
 	color: string;
 	time: string;
+	type: string | null;
 };

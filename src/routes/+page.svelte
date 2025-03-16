@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Message from '$lib/components/Message.svelte';
+	import MessageDate from '$lib/components/MessageDate.svelte';
 	import MessageInput from '$lib/components/MessageInput.svelte';
 	import MessageWelcome from '$lib/components/MessageWelcome.svelte';
 	import { socket } from '$lib/socket';
@@ -46,7 +47,9 @@
 			<MessageWelcome />
 
 			{#each oldMessages.slice().reverse() as message}
-				{#if message}
+				{#if message.type === 'event'}
+					<MessageDate date={message} />
+				{:else if message}
 					<Message {message} onReply={handleReply} />
 				{/if}
 			{/each}
